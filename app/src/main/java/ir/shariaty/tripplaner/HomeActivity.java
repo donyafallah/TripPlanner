@@ -13,7 +13,11 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -24,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
     Switch switchAlarm;
     RecyclerView recyclerView;
     PackingListAdapter adapter;
-
     Calendar startDateCal = Calendar.getInstance();
     Calendar endDateCal = Calendar.getInstance();
     List<String> packingItems = new ArrayList<>();
@@ -48,6 +51,17 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewItems);
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
+                        1001);
+            }
+        }
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PackingListAdapter(packingItems);
         recyclerView.setAdapter(adapter);
@@ -55,6 +69,8 @@ public class HomeActivity extends AppCompatActivity {
         etEndDate.setOnClickListener(v -> showDatePicker(endDateCal, etEndDate));
         btnAddItem.setOnClickListener(v -> addNewItem());
         btnSaveTrip.setOnClickListener(v -> saveTrip());
+
+
     }
 
     private void showDatePicker(Calendar calendar, EditText targetEditText) {
@@ -86,12 +102,14 @@ public class HomeActivity extends AppCompatActivity {
         String companions = etCompanions.getText().toString();
         String alarmNote = etAlarmNote.getText().toString();
         boolean isAlarmOn = switchAlarm.isChecked();
-
         if (isAlarmOn) {
             scheduleAlarm(startDate, alarmNote);
         }
         Toast.makeText(this, "Trip saved successfully!", Toast.LENGTH_SHORT).show();
     }
+
+
+
 
     private void scheduleAlarm(String startDateStr, String note) {
         try {
@@ -99,17 +117,25 @@ public class HomeActivity extends AppCompatActivity {
             Calendar alarmTime = Calendar.getInstance();
             alarmTime.setTime(tripDate);
             alarmTime.add(Calendar.DAY_OF_MONTH, -1);
-
             Intent intent = new Intent(this, AlarmReceiver.class);
             intent.putExtra("note", note);
-
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                    this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), pendingIntent);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1001) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

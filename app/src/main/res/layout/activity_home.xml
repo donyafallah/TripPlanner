@@ -1,116 +1,79 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:id="@+id/main"
-android:padding="16dp"
-android:background="#FAFAFA"
->
-
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="#FAFAFA">
 
     <TextView
-        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Travel Planner"
+        android:text="Your Trips"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="24dp"/>
-
-
-    <EditText
-        android:id="@+id/etStartDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Trip start date"
-        android:focusable="false"
-        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-        android:background="@android:drawable/edit_text"/>
-
-
-    <EditText
-        android:id="@+id/etEndDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Trip end date"
-        android:focusable="false"
-        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/edit_text"/>
-
-
-    <EditText
-        android:id="@+id/etCompanions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Who are your travel companions?"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/edit_text"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Packing list:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:paddingBottom="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewItems"
+        android:id="@+id/recyclerTrips"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp" />
-    <EditText
-        android:id="@+id/etNewItem"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTripSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter item to pack"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/edit_text"/>
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="4dp"
+        android:visibility="gone"
+        app:cardCornerRadius="12dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvTripTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trip to Paris"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/tvTripDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2025-08-01 to 2025-08-10"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvTripCompanions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="With: Alice, Bob"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnAddItem"
+        android:id="@+id/btnNewTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="➕ Add item"
-        android:layout_marginTop="8dp"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Night before reminder:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
-    <Switch
-        android:id="@+id/switchAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enable travel reminder"/>
-
-    <EditText
-        android:id="@+id/etAlarmNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="e.g., Don't forget your passport!"
-        android:layout_marginTop="4dp"
-        android:background="@android:drawable/edit_text"/>
-
-
-    <Button
-        android:id="@+id/btnSaveTrip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save New Trip"
-        android:layout_marginTop="24dp"
+        android:text="➕ New Trip"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#009688"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF" />
 </LinearLayout>
-</ScrollView>

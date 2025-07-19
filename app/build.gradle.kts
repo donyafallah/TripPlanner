@@ -1,5 +1,9 @@
+
+
 plugins {
+
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -25,9 +29,11 @@ android {
             )
         }
     }
+
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
@@ -40,17 +46,19 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation ("com.google.android.gms:play-services-auth:20.7.0")
-    implementation ("com.google.firebase:firebase-auth:22.3.1")
 
-    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+
+
+    // 1. ابتدا Firebase BoM را برای مدیریت نسخه ها اضافه کنید (فقط یک بار)
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+
+
+    // کتابخانه احراز هویت (Authentication)
     implementation("com.google.firebase:firebase-auth")
+
+    // کتابخانه ورود با گوگل (Google Sign-In)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+    // (اختیاری) برای جمع آوری آمار استفاده از برنامه
     implementation("com.google.firebase:firebase-analytics")
-
-
-
-
-
 }
-
-

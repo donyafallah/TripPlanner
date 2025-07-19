@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "557407774766",
+    "project_id": "tripplanner-b48bd",
+    "storage_bucket": "tripplanner-b48bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557407774766:android:d688202c8caae4706017bf",
+        "android_client_info": {
+          "package_name": "ir.shariaty.tripplaner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557407774766-u007n4dsv425behqem7himbhsq2ulubh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.shariaty.tripplaner",
+            "certificate_hash": "6b4ce8f9804ee3aec87120c42279b6c1032ff60d"
+          }
+        },
+        {
+          "client_id": "557407774766-3k5nsv0nqpf8hil7k35ikqjkta528kbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN1ff5GYhBVTG8ml4VQsctKbvnJTjf6HU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557407774766-3k5nsv0nqpf8hil7k35ikqjkta528kbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

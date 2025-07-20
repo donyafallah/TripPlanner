@@ -14,15 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "557407774766-u007n4dsv425behqem7himbhsq2ulubh.apps.googleusercontent.com",
+          "client_id": "557407774766-g7vcq4cv9uckec71hsclin1d5t9mm8gt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ir.shariaty.tripplaner",
-            "certificate_hash": "6b4ce8f9804ee3aec87120c42279b6c1032ff60d"
+            "certificate_hash": "b7794238eaed5db3a52ffe69a25f9bdee4a06f11"
           }
         },
         {
-          "client_id": "557407774766-3k5nsv0nqpf8hil7k35ikqjkta528kbs.apps.googleusercontent.com",
+          "client_id": "557407774766-v8qqaguciac5m3mc26smvaikcifokc20.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "557407774766-3k5nsv0nqpf8hil7k35ikqjkta528kbs.apps.googleusercontent.com",
+              "client_id": "557407774766-v8qqaguciac5m3mc26smvaikcifokc20.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

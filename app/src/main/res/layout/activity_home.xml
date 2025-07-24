@@ -70,7 +70,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- RecyclerView شما در اینجا قرار می گیرد. فعلا خالی است -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerTrips"
             android:layout_width="match_parent"

@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // اتصال ویجت‌ها از XML به جاوا
-        btnNewTrip = findViewById(R.id.btnNewTrip); // این آیدی باید با آیدی دکمه در XML یکی باشد
+        btnNewTrip = findViewById(R.id.btnNewTrip);
         cardTripSummary = findViewById(R.id.cardTripSummary);
         tvTripTitle = findViewById(R.id.tvTripTitle);
         tvTripDate = findViewById(R.id.tvTripDate);
